@@ -1,7 +1,7 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/ubuntu
 {
-	"name": "Ubuntu",
+	"name": "ai-launchpad",
 	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
 	// "image": "mcr.microsoft.com/devcontainers/base:noble"
 	"build": {
@@ -28,7 +28,15 @@
 				"terminal.integrated.shellIntegration.enabled": true
 			},
 			"extensions": [
-				"ms-azuretools.vscode-docker"
+				"ms-azuretools.vscode-docker",
+				"GitHub.copilot-chat",
+				"GitHub.copilot",
+				// "ms-dotnettools.csdevkit",
+				"shd101wyy.markdown-preview-enhanced",
+				"ms-vscode.vscode-typescript-next",
+				"ms-python.python",
+				"ms-python.black-formatter",
+				"ms-toolsai.jupyter"
 			]
 		}
 	}
