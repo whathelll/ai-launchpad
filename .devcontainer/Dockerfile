@@ -15,7 +15,9 @@ RUN --mount=type=cache,target=/var/cache/apt --mount=type=cache,target=/var/lib/
     vim \
     make \
     software-properties-common \
+    python3 \
     python3-pip \
+    python3-venv \
     bash-completion \
     build-essential \
     unzip \ 
@@ -46,11 +48,36 @@ RUN --mount=type=cache,target=/var/cache/apt --mount=type=cache,target=/var/lib/
     && apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
 # install awscli
-RUN --mount=type=cache,target=/var/cache/apt --mount=type=cache,target=/var/lib/apt \ 
-    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \
-    && unzip awscliv2.zip \
-    && ./aws/install \
-    && rm -rf awscliv2.zip aws
+# RUN --mount=type=cache,target=/var/cache/apt --mount=type=cache,target=/var/lib/apt \ 
+#     curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" \   ## for x86_64
+#     curl "https://awscli.amazonaws.com/awscli-exe-linux-aarch64.zip" -o "awscliv2.zip" \  ## for arm64
+#     && unzip awscliv2.zip \
+#     && ./aws/install \
+#     && rm -rf awscliv2.zip aws
+
+
+# setup python environment
+RUN python3 -mvenv ~/ai-launchpad-venv
+RUN echo ". ~/ai-launchpad-venv/bin/activate" >> ~/.bashrc
+
+
+# Install JupyterLab
+RUN . ~/ai-launchpad-venv/bin/activate && pip install jupyterlab
+
+
+
+# Install .NET
+# RUN --mount=target=/var/lib/apt/lists,type=cache,sharing=locked \
+#     --mount=target=/var/cache/apt,type=cache,sharing=locked \
+#     <<EOF
+# wget https://dot.net/v1/dotnet-install.sh -O dotnet-install.sh
+# chmod +x dotnet-install.sh
+# ./dotnet-install.sh --version latest
+# EOF
+# COPY NuGet.Config /root/.nuget/NuGet/NuGet.Config
+# ENV PATH=$PATH:/root/.dotnet
+# ENV DOTNET_ROOT=/root/.dotnet
+# RUN dotnet tool install -g Microsoft.dotnet-interactive && dotnet interactive jupyter install  
 
 
 
