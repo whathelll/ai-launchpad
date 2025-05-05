@@ -7,16 +7,12 @@
 	"build": {
 		"dockerfile": "Dockerfile"
 	},
-
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
-
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
-
 	// Use 'postCreateCommand' to run commands after the container is created.
 	// "postCreateCommand": "uname -a",
-
 	/* If you want to use docker in docker then uncomment the below (ubuntu) */
 	"mounts": [
 		"source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind"
@@ -31,16 +27,16 @@
 				"ms-azuretools.vscode-docker",
 				"GitHub.copilot-chat",
 				"GitHub.copilot",
-				// "ms-dotnettools.csdevkit",
 				"shd101wyy.markdown-preview-enhanced",
 				"ms-vscode.vscode-typescript-next",
 				"ms-python.python",
-				"ms-python.black-formatter",
-				"ms-toolsai.jupyter"
+				"ms-python.black-formatter", // Code formatter
+				"ms-toolsai.jupyter",
+				"ms-python.mypy-type-checker", // Type checker
+				"ms-python.flake8" // Error and style linter
 			]
 		}
 	}
-
 	// Uncomment to connect as root instead. More info: https://aka.ms/dev-containers-non-root.
 	// "remoteUser": "root"
 }
