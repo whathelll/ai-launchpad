@@ -1,3 +1,5 @@
 {
-  "python.defaultInterpreterPath": "/root/.venv/bin/python"
+  "python.defaultInterpreterPath": "/root/.venv/bin/python",
+  "chat.mcp.enabled": true,
+  "python.analysis.typeCheckingMode": "standard"
 }

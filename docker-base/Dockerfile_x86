@@ -55,9 +55,22 @@ RUN curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2
     && ./aws/install \
     && rm -rf awscliv2.zip aws
 
+
+# install gh cli
+RUN  --mount=type=cache,target=/var/cache/apt --mount=type=cache,target=/var/lib/apt \ 
+    (type -p wget >/dev/null || (apt update && apt-get install wget -y)) \
+	&& mkdir -p -m 755 /etc/apt/keyrings \
+        && out=$(mktemp) && wget -nv -O$out https://cli.github.com/packages/githubcli-archive-keyring.gpg \
+        && cat $out | tee /etc/apt/keyrings/githubcli-archive-keyring.gpg > /dev/null \
+	&& chmod go+r /etc/apt/keyrings/githubcli-archive-keyring.gpg \
+	&& echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null \
+	&& apt update \
+	&& apt install gh -y
+
+
 # install uv
 WORKDIR /root
-RUN pipx install uv && uv venv && uv pip install jupyterlab
+RUN pipx install uv && uv venv && uv pip install jupyterlab openai mcp-server-fetch
 
 # setup python environment
 # RUN python3 -mvenv ~/ai-launchpad-venv

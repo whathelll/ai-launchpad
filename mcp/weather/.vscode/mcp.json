@@ -1,0 +1,14 @@
+{
+  "servers": {
+    "weather": {
+      "type": "stdio",
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/workspaces/ai-launchpad/mcp/weather",
+        "run",
+        "/workspaces/ai-launchpad/mcp/weather/weather.py"
+      ]
+    }
+  }
+}
