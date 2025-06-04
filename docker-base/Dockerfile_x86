@@ -81,6 +81,13 @@ RUN pipx install uv && uv venv && uv pip install jupyterlab openai mcp-server-fe
 # RUN . ~/ai-launchpad-venv/bin/activate && pip install jupyterlab
 
 
+# Download and install nvm:
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash \
+  && \. "$HOME/.nvm/nvm.sh" && nvm install 22
+
+
+
+
 
 # Install .NET
 # RUN --mount=target=/var/lib/apt/lists,type=cache,sharing=locked \

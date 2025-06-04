@@ -102,6 +102,7 @@ def test_alerts():
 
 if __name__ == "__main__":
     # Initialize and run the server
-    mcp.run(transport='stdio')
+    print("running weather MCP server")
+    mcp.run()
 
     # test_alerts()

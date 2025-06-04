@@ -1,3 +1,6 @@
+# Tools
+If you're asked about weather questions. Use the `weather` tool to fetch the current weather information.
+
 # Running files
 This repo uses uv package manager. 
 

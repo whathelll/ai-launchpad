@@ -18,6 +18,9 @@ This repository contains a collection of projects to explore AI libraries and fr
 
 3. Open the Command Palette (F1 or Ctrl+Shift+P) and select "Remote-Containers: ReOpen Folder in Container...".
 
+4. Add a `.env` file with the OpenAI key if you want to run scripts that rely on the OpenAI endpoint.
+See the [.env_example](./.env_example) file for an example of required environment variables.
+Do not commit `.env` file.
 
 
 # Python Development
