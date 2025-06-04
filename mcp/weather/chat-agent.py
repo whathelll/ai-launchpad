@@ -11,52 +11,12 @@ from agents.mcp import MCPServer, MCPServerStdio
 from datetime import datetime
 import logging
 
-# Import both real and dummy weather functions
-# from weather import get_alerts, get_forecast
-from dummy_weather import get_alerts as dummy_get_alerts, get_forecast as dummy_get_forecast
-
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='[%(asctime)s] %(levelname)s: %(message)s')
 
 # Get today's date
 today = datetime.now().strftime("%d %B, %Y")
 
-# City coordinates dictionary
-CITIES = {
-    "new york": (40.7128, -74.0060),
-    "los angeles": (34.0522, -118.2437),
-    "chicago": (41.8781, -87.6298),
-    "houston": (29.7604, -95.3698),
-    "phoenix": (33.4484, -112.0740),
-    "philadelphia": (39.9526, -75.1652),
-    "san antonio": (29.4241, -98.4936),
-    "san diego": (32.7157, -117.1611),
-    "dallas": (32.7767, -96.7970),
-    "san jose": (37.3382, -121.8863)
-}
-
-# Function tools for the agent
-@function_tool
-async def get_weather_alerts(state: str) -> str:
-    logging.info(f"Called get_weather_alerts with state={state}")
-    try:
-        result = await dummy_get_alerts(state)
-        logging.info(f"get_weather_alerts result: {result.strip()[:100]}...")
-        return result
-    except Exception as e:
-        logging.error(f"Error with real get_alerts: {e}")
-        return await dummy_get_alerts(state)
-
-@function_tool
-async def get_weather_forecast(latitude: float, longitude: float) -> str:
-    logging.info(f"Called get_weather_forecast with latitude={latitude}, longitude={longitude}")
-    try:
-        result = await dummy_get_forecast(latitude, longitude)
-        logging.info(f"get_weather_forecast result: {result.strip()[:100]}...")
-        return result
-    except Exception as e:
-        logging.error(f"Error with real get_forecast: {e}")
-        return await dummy_get_forecast(latitude, longitude)
 
 # For now, the agent is constructed without mcp_servers, just with tools.
 async def main():
