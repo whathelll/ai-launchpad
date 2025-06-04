@@ -1,4 +1,4 @@
 .env
 .external
-.references
+.reference
 **/__pycache__/
