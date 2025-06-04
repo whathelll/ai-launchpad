@@ -72,13 +72,6 @@ RUN  --mount=type=cache,target=/var/cache/apt --mount=type=cache,target=/var/lib
 WORKDIR /root
 RUN pipx install uv && uv venv && uv pip install jupyterlab openai mcp-server-fetch
 
-# setup python environment
-# RUN python3 -mvenv ~/ai-launchpad-venv
-# RUN echo ". ~/ai-launchpad-venv/bin/activate" >> ~/.bashrc
-
-
-# Install JupyterLab
-# RUN . ~/ai-launchpad-venv/bin/activate && pip install jupyterlab
 
 
 # Download and install nvm:
